@@ -1,8 +1,9 @@
 #!/bin/bash
-CONFIGS=("server.properties" "bukit.yml" "spigot.yml")
+CONFIGS=("server.properties" "bukit.yml" "spigot.yml" "paper.yml")
 SERVER_PROPERTIES_URL=""
 BUKKIT_YAML_URL=""
 SPIGOT_YAML_URL=""
+PAPER_YAML_URL=""
 
 function move_and_backup {
   cp -v /tmp/"${1}".remote /srv/minecraft/"${1}" 2>&1
@@ -28,6 +29,7 @@ for CONFIG in "${CONFIGS[@]}"; do
   "server.properties" ) CURRENT_URL="${SERVER_PROPERTIES_URL}" ;;
   "bukkit.yml" ) CURRENT_URL="${BUKKIT_YAML_URL}" ;;
   "spigot.yml" ) CURRENT_URL="${SPIGOT_YAML_URL}" ;;
+  "paper.yml" ) CURRENT_URL="${PAPER_YAML_URL}" ;;
   esac
   if [ "${CURRENT_URL}" != "" ]; then
     echo "Fetch config file from server" 2>&1
