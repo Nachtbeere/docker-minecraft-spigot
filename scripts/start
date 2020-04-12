@@ -1,0 +1,4 @@
+#!/bin/bash
+
+bash /srv/initialize.sh
+bash /srv/run-minecraft.sh
