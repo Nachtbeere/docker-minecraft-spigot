@@ -9,7 +9,7 @@ RUN set -x \
     && apk add -U --no-cache bash curl openssl imagemagick rsync ca-certificates \
     && mkdir -p /srv/minecraft \
     && wget -O /tmp/paperclip.jar https://papermc.io/ci/job/Paper-1.15/lastSuccessfulBuild/artifact/paperclip.jar \
-    && mv paperclip.jar /srv/minecraft/server.jar \
+    && mv /tmp/paperclip.jar /srv/minecraft/server.jar \
     && rm -rf /var/cache/apk/*
 
 COPY scripts/server.properties /tmp/server.properties.default
