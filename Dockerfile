@@ -8,7 +8,7 @@ ENV DOCKER="TRUE"
 WORKDIR "/tmp"
 
 RUN set -x \
-    && apk add -U --no-cache bash openrc curl openssl imagemagick rsync ca-certificates tmux \
+    && apk add -U --no-cache bash curl openssl imagemagick rsync ca-certificates \
     && apk add --virtual .build-deps wget git \
     && wget -O BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastStableBuild/artifact/target/BuildTools.jar \
     && java -Xmx1024M -jar BuildTools.jar --rev ${VERSION} \
