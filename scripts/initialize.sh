@@ -1,16 +1,16 @@
 #!/bin/bash
-CONFIGS=("server.properties" "bukit.yml" "spigot.yml" "paper.yml")
+CONFIGS=("server.properties" "bukit.yml" "spigot.yml" "paper.yml" "server-icon.png")
 SERVER_PROPERTIES_URL=""
 BUKKIT_YAML_URL=""
 SPIGOT_YAML_URL=""
 PAPER_YAML_URL=""
+SERVER_ICON_URL=""
 
 function move_and_backup {
   cp -v /tmp/"${1}".remote /srv/minecraft/"${1}" 2>&1
   mv -v /tmp/"${1}".remote /tmp/"${1}".remote.bak 2>&1
   if [ $? != 0 ]; then
     echo "ERROR: move_and_backup failed" 2>&1
-    exit 2
   fi
 }
 
@@ -30,6 +30,7 @@ for CONFIG in "${CONFIGS[@]}"; do
   "bukkit.yml" ) CURRENT_URL="${BUKKIT_YAML_URL}" ;;
   "spigot.yml" ) CURRENT_URL="${SPIGOT_YAML_URL}" ;;
   "paper.yml" ) CURRENT_URL="${PAPER_YAML_URL}" ;;
+  "server-icon.png" ) CURRENT_URL="${SERVER_ICON_URL}" ;;
   esac
   if [ "${CURRENT_URL}" != "" ]; then
     echo "Fetch config file from server" 2>&1
